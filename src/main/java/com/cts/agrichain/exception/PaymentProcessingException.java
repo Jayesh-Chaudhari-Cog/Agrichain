@@ -1,6 +1,6 @@
-package com.cts.agrichain.exceptions;
+package com.cts.agrichain.exception;
 
-public class PaymentProcessingException {
+public class PaymentProcessingException extends Exception {
     private String errorCode;
 
     public String getErrorCode() {

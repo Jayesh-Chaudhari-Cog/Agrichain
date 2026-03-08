@@ -13,5 +13,5 @@ public class FarmerDocument {
     private Instant uploadedDate;
     private VerificationStatus verificationStatus;
 
-    // Constructors, getters, setters
+
 }

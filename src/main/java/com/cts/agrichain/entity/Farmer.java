@@ -6,7 +6,7 @@ public class Farmer {
 
     private String farmerId;
     private String name;
-    private String dob;           // consider LocalDate; ensure format & age validation
+    private String dob;
     private String gender;
     private String address;
     private String contactInfo;

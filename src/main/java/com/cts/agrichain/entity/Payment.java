@@ -3,6 +3,8 @@ package com.cts.agrichain.entity;
 import com.cts.agrichain.enums.PaymentStatus;
 import com.cts.agrichain.enums.PaymentType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 
 import java.time.LocalDate;
@@ -12,8 +14,12 @@ public class Payment {
     @Id
     private int paymentID;
     private int transactionID;
+
+    @Enumerated(EnumType.STRING)
     private PaymentType method;
     private LocalDate paymentDate;
+
+    @Enumerated(EnumType.STRING)
     private PaymentStatus paymentStatus;
 
     public int getPaymentID() {

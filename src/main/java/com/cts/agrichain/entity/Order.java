@@ -2,6 +2,8 @@ package com.cts.agrichain.entity;
 
 import com.cts.agrichain.enums.OrderStatus;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 
 @Entity
@@ -13,6 +15,8 @@ public class Order {
     private int traderId;
     private int quantity;
     private String orderDate;
+
+    @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
     public int getOrderId() {

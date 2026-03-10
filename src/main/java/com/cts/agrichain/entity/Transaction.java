@@ -2,6 +2,8 @@ package com.cts.agrichain.entity;
 
 import com.cts.agrichain.enums.TransactionStatus;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 
 import java.time.LocalDate;
@@ -14,6 +16,8 @@ public class Transaction {
     private int orderID;
     private double transactionAmount;
     private LocalDate transactionDate;
+
+    @Enumerated(EnumType.STRING)
     private TransactionStatus transactionStatus;
 
     public int getTransactionID() {

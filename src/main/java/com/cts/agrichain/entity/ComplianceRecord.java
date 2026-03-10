@@ -23,4 +23,52 @@ public class ComplianceRecord {
 
     private LocalDate date;
     private String notes;
+
+    public int getComplianceID() {
+        return complianceID;
+    }
+
+    public void setComplianceID(int complianceID) {
+        this.complianceID = complianceID;
+    }
+
+    public int getEntityID() {
+        return entityID;
+    }
+
+    public void setEntityID(int entityID) {
+        this.entityID = entityID;
+    }
+
+    public ComplianceType getType() {
+        return type;
+    }
+
+    public void setType(ComplianceType type) {
+        this.type = type;
+    }
+
+    public ComplianceResult getResult() {
+        return result;
+    }
+
+    public void setResult(ComplianceResult result) {
+        this.result = result;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
 }

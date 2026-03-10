@@ -19,12 +19,10 @@ public class Audit {
     private String findings;
 
     private LocalDate date;
-<<<<<<< HEAD
-    private String status;
-=======
 
     @Enumerated(EnumType.STRING)
     private AuditStatus status;
+
     public Long getAuditId() {
         return auditId;
     }

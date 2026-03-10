@@ -8,5 +8,4 @@ public class Dashboard {
     private Long failedCount;
     private Long officerId;
 
-
 }

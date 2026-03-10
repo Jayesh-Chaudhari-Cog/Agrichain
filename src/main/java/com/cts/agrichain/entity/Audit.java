@@ -72,7 +72,6 @@ public class Audit {
     public void setStatus(AuditStatus status) {
         this.status = status;
     }
->>>>>>> kanishma
 }
 
 

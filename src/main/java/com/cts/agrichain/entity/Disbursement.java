@@ -1,5 +1,7 @@
 package com.cts.agrichain.entity;
 
+import com.cts.agrichain.enums.DisbursementStatus;
+
 import java.time.LocalDate;
 
 public class Disbursement {

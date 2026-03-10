@@ -1,12 +1,58 @@
 package com.cts.agrichain.entity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import java.time.Instant;
+import java.time.LocalTime;
+
+
+@Entity
 
 public class AuditLog {
-    private String auditId;
-    private String userId;    // can be null for unauth'd events
-    private String action;    // e.g., AUTH_LOGIN_SUCCESS, USER_CREATE, DOC_UPLOAD
-    private String resource;  // e.g., "User:123", "Farmer:456"
-    private Instant timestamp;
+    @Id
+    private int auditId;
+    private int userId;
+    private String action;
+    private String resource;
+    private LocalTime timestamp;
 
-    // Constructors, getters, setters
+    public int getAuditId() {
+        return auditId;
+    }
+
+    public void setAuditId(int auditId) {
+        this.auditId = auditId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+    public String getResource() {
+        return resource;
+    }
+
+    public void setResource(String resource) {
+        this.resource = resource;
+    }
+
+    public LocalTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalTime timestamp) {
+        this.timestamp = timestamp;
+    }
 }

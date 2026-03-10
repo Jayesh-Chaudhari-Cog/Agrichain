@@ -5,6 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
+import org.springframework.cglib.core.Local;
+
+import java.time.LocalDate;
 
 @Entity
 public class Order {
@@ -14,7 +17,7 @@ public class Order {
     private int listingId;
     private int traderId;
     private int quantity;
-    private String orderDate;
+    private LocalDate orderDate;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
@@ -47,10 +50,10 @@ public class Order {
         this.quantity = quantity;
     }
 
-    public String getOrderDate() {
+    public LocalDate getOrderDate() {
         return orderDate;
     }
-    public void setOrderDate(String orderDate) {
+    public void setOrderDate(LocalDate orderDate) {
         this.orderDate = orderDate;
     }
 

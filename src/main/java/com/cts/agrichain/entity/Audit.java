@@ -8,8 +8,4 @@ public class Audit {
     private String findings;
     private LocalDate date;
     private String status;
-
-
-
-
 }

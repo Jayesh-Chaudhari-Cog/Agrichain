@@ -8,8 +8,6 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Farmer {
-
-
     @Id
     private String farmerId;
     private String name;

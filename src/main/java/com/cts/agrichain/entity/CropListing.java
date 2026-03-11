@@ -9,7 +9,7 @@ public class CropListing {
 
     @Id
     private int listingId;
-
+// TODO
     private int farmerId;
     private String cropType;
     private int quantity;

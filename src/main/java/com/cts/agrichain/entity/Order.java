@@ -14,7 +14,9 @@ public class Order {
 
     @Id
     private int orderId;
+    // TODO
     private int listingId;
+
     private int traderId;
     private int quantity;
     private LocalDate orderDate;

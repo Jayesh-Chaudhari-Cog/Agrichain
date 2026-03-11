@@ -1,10 +1,7 @@
 package com.cts.agrichain.entity;
 
 import com.cts.agrichain.enums.DisbursementStatus;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -12,9 +9,17 @@ import java.time.LocalDate;
 public class Disbursement {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int DisbursementID;
-    private int FarmerID;
-    private int ProgramID;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "programId")
+    private SubsidyProgram subsidyProgram;
+
+    @ManyToOne
+    @JoinColumn(name = "farmerId")
+    private Farmer farmer;
+
     private double disbursementAmount;
     private LocalDate disbursementDate;
 
@@ -28,18 +33,18 @@ public class Disbursement {
         DisbursementID = disbursementID;
     }
 
-    public int getFarmerID() {
-        return FarmerID;
+    public Farmer getFarmer() {
+        return farmer;
     }
-    public void setFarmerID(int farmerID) {
-        FarmerID = farmerID;
+    public void setFarmer(Farmer farmer) {
+        this.farmer = farmer;
     }
 
-    public int getProgramID() {
-        return ProgramID;
+    public SubsidyProgram getSubsidyProgram() {
+        return subsidyProgram;
     }
-    public void setProgramID(int programID) {
-        ProgramID = programID;
+    public void setSubsidyProgram(SubsidyProgram subsidyProgram) {
+        this.subsidyProgram = subsidyProgram;
     }
 
     public double getDisbursementAmount() {

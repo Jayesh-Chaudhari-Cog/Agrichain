@@ -10,7 +10,6 @@ import jakarta.persistence.Id;
 public class Farmer {
     @Id
     private String farmerId;
-    private String name;
     private int dob;
     private String gender;
     private String address;

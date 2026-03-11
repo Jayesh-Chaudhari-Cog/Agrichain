@@ -13,6 +13,7 @@ public class Transaction {
 
     @Id
     private int transactionID;
+    // TODO
     private int orderID;
     private double transactionAmount;
     private LocalDate transactionDate;

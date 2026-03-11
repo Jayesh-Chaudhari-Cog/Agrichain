@@ -14,6 +14,7 @@ public class FarmerDocument {
 
     @Id
     private int farmerId;
+
     private int documentId;
     @Enumerated(EnumType.STRING)
     private DocType docType;

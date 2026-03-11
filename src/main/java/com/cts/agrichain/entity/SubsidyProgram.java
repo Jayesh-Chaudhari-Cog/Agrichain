@@ -2,18 +2,21 @@ package com.cts.agrichain.entity;
 
 import com.cts.agrichain.enums.OrderStatus;
 import com.cts.agrichain.enums.SubsidyStatus;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class SubsidyProgram {
 
     @Id
-    private int ProgramID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int programID;
+
+    @OneToMany(mappedBy = "subsidyProgram", cascade = CascadeType.ALL)
+    private List<Disbursement> disbursements;
+
     private String Title;
     private String Description;
     private LocalDate StartDate;
@@ -25,10 +28,10 @@ public class SubsidyProgram {
     private SubsidyStatus subsidyStatus;
 
     public int getProgramID() {
-        return ProgramID;
+        return programID;
     }
     public void setProgramID(int programID) {
-        ProgramID = programID;
+        programID = programID;
     }
 
     public String getTitle() {
@@ -78,5 +81,10 @@ public class SubsidyProgram {
     }
     public void setSubsidyStatus(SubsidyStatus subsidyStatus) {
         this.subsidyStatus = subsidyStatus;
+    }
+
+    public void addDisbursement(Disbursement disbursement) {
+        disbursements.add(disbursement);
+        disbursement.setSubsidyProgram(this);
     }
 }

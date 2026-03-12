@@ -1,6 +1,5 @@
 package com.cts.agrichain.entity;
 
-import com.cts.agrichain.enums.OrderStatus;
 import com.cts.agrichain.enums.SubsidyStatus;
 import jakarta.persistence.*;
 
@@ -17,10 +16,10 @@ public class SubsidyProgram {
     @OneToMany(mappedBy = "subsidyProgram", cascade = CascadeType.ALL)
     private List<Disbursement> disbursements;
 
-    private String Title;
-    private String Description;
-    private LocalDate StartDate;
-    private LocalDate EndDate;
+    private String title;
+    private String description;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private double allottedBudget;
     private double consumedBudget;
 
@@ -35,31 +34,31 @@ public class SubsidyProgram {
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public LocalDate getStartDate() {
-        return StartDate;
+        return startDate;
     }
     public void setStartDate(LocalDate startDate) {
-        StartDate = startDate;
+        this.startDate = startDate;
     }
 
     public LocalDate getEndDate() {
-        return EndDate;
+        return endDate;
     }
     public void setEndDate(LocalDate endDate) {
-        EndDate = endDate;
+        this.endDate = endDate;
     }
 
     public double getAllottedBudget() {

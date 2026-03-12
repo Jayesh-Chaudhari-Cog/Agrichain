@@ -1,10 +1,7 @@
 package com.cts.agrichain.entity;
 
 import com.cts.agrichain.enums.TransactionStatus;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -14,7 +11,10 @@ public class Transaction {
     @Id
     private int transactionID;
     // TODO
-    private int orderID;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "OrderId")
+    private Order order;
     private double transactionAmount;
     private LocalDate transactionDate;
 
@@ -28,11 +28,11 @@ public class Transaction {
         this.transactionID = transactionID;
     }
 
-    public int getOrderID() {
-        return orderID;
+    public Order getOrder() {
+        return order;
     }
-    public void setOrderID(int orderID) {
-        this.orderID = orderID;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     public double getTransactionAmount() {

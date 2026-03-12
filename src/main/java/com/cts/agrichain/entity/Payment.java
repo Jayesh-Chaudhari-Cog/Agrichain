@@ -2,10 +2,7 @@ package com.cts.agrichain.entity;
 
 import com.cts.agrichain.enums.PaymentStatus;
 import com.cts.agrichain.enums.PaymentType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -13,7 +10,10 @@ import java.time.LocalDate;
 public class Payment {
     @Id
     private int paymentID;
-    private int transactionID;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "TransactionId")
+    private Transaction transaction;
 
     @Enumerated(EnumType.STRING)
     private PaymentType method;
@@ -29,11 +29,11 @@ public class Payment {
         this.paymentID = paymentID;
     }
 
-    public int getTransactionID() {
-        return transactionID;
+    public Transaction getTransaction() {
+        return transaction;
     }
-    public void setTransactionID(int transactionID) {
-        this.transactionID = transactionID;
+    public void setTransaction(Transaction transaction) {
+        this.transaction = transaction;
     }
 
     public PaymentType getMethod() {

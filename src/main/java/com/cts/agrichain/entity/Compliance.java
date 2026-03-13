@@ -22,6 +22,10 @@ public class Compliance {
     private LocalDate date;
     private String notes;
 
+    @ManyToOne
+    @JoinColumn(name = "audit_id")
+    private Audit audit;
+
 
     public long getComplianceId() {
         return complianceId;
@@ -68,6 +72,13 @@ public class Compliance {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+    public Audit getAudit() {
+        return audit;
+    }
+
+    public void setAudit(Audit audit) {
+        this.audit = audit;
     }
 }
 

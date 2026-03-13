@@ -4,6 +4,8 @@ import com.cts.agrichain.enums.AuditStatus;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Table(name = "audit")
 public class Audit {
@@ -19,10 +21,15 @@ public class Audit {
 
     private LocalDate date;
 
+
     @Enumerated(EnumType.STRING)
     private AuditStatus status;
 
+    @OneToMany(mappedBy = "audit", cascade = CascadeType.ALL)
+    private List<Compliance> compliances;
+
     public Long getAuditId() {
+
         return auditId;
     }
 
@@ -39,14 +46,17 @@ public class Audit {
     }
 
     public AuditScope getScope() {
+
         return scope;
     }
 
     public void setScope(AuditScope scope) {
+
         this.scope = scope;
     }
 
     public String getFindings() {
+
         return findings;
     }
 
@@ -67,7 +77,20 @@ public class Audit {
     }
 
     public void setStatus(AuditStatus status) {
+
         this.status = status;
+    }
+    public List<Compliance> getCompliances() {
+        return compliances;
+    }
+
+    public void setCompliances(List<Compliance> compliances) {
+        this.compliances = compliances;
+    }
+
+    public void addCompliance(Compliance compliance) {
+        compliances.add(compliance);
+        compliance.setAudit(this);
     }
 }
 

@@ -11,6 +11,7 @@ import jakarta.persistence.*;
 public class ComplianceRecord {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int complianceID;
 
     private int entityID;

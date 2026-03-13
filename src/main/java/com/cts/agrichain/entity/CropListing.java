@@ -12,7 +12,10 @@ public class CropListing {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-generate primary key
     private int listingId;
 
-    private int farmerId;
+    @ManyToOne
+    @JoinColumn(name = "farmerId", nullable = false)
+    private Farmer farmer;
+
     private String cropType;
     private int quantity;
     private double price;
@@ -22,7 +25,7 @@ public class CropListing {
     private CropListingStatus status;   // PENDING, VALIDATED, REJECTED
 
     // Relationship: One CropListing can have many Orders
-    @OneToMany(mappedBy = "listingId", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "cropListing", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders;
 
     // Getters and Setters
@@ -33,13 +36,12 @@ public class CropListing {
         this.listingId = listingId;
     }
 
-    public int getFarmerId() {
-        return farmerId;
+    public Farmer getFarmer() {
+        return farmer;
     }
-    public void setFarmerId(int farmerId) {
-        this.farmerId = farmerId;
+    public void setFarmer(Farmer farmer) {
+        this.farmer = farmer;
     }
-
     public String getCropType() {
         return cropType;
     }

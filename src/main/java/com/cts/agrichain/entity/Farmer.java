@@ -32,6 +32,18 @@ public class Farmer {
     @OneToMany(mappedBy = "farmer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FarmerDocument> documents;
 
+    @OneToMany(mappedBy = "farmer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Disbursement> disbursements;
+
+
+    public List<Disbursement> getDisbursements() {
+        return disbursements;
+    }
+
+    public void setDisbursements(List<Disbursement> disbursements) {
+        this.disbursements = disbursements;
+    }
+
     // Getters and Setters
     public int getFarmerId() {
         return farmerId;

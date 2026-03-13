@@ -1,5 +1,5 @@
 package com.cts.agrichain.service;
 
-public class AdminService {
+public interface AdminService {
 
 }

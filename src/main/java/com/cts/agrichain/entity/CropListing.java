@@ -2,77 +2,83 @@ package com.cts.agrichain.entity;
 
 import com.cts.agrichain.enums.CropListingStatus;
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "CropListing")
 public class CropListing {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-generate primary key
     private int listingId;
-// TODO
+
     private int farmerId;
     private String cropType;
     private int quantity;
     private double price;
     private String location;
 
-    public CropListingStatus getStatus() {
-        return status;
-    }
+    @Enumerated(EnumType.STRING)
+    private CropListingStatus status;   // PENDING, VALIDATED, REJECTED
 
-    public void setStatus(CropListingStatus status) {
-        this.status = status;
-    }
+    // Relationship: One CropListing can have many Orders
+    @OneToMany(mappedBy = "listingId", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Order> orders;
 
-    public String getLocation() {
-        return location;
+    // Getters and Setters
+    public int getListingId() {
+        return listingId;
     }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getCropType() {
-        return cropType;
-    }
-
-    public void setCropType(String cropType) {
-        this.cropType = cropType;
+    public void setListingId(int listingId) {
+        this.listingId = listingId;
     }
 
     public int getFarmerId() {
         return farmerId;
     }
-
     public void setFarmerId(int farmerId) {
         this.farmerId = farmerId;
     }
 
-    public int getListingId() {
-        return listingId;
+    public String getCropType() {
+        return cropType;
+    }
+    public void setCropType(String cropType) {
+        this.cropType = cropType;
     }
 
-    public void setListingId(int listingId) {
-        this.listingId = listingId;
+    public int getQuantity() {
+        return quantity;
+    }
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    @Enumerated(EnumType.STRING)
-    private CropListingStatus status;   // PENDING, VALIDATED, REJECTED
+    public double getPrice() {
+        return price;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
+    public String getLocation() {
+        return location;
+    }
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public CropListingStatus getStatus() {
+        return status;
+    }
+    public void setStatus(CropListingStatus status) {
+        this.status = status;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 }

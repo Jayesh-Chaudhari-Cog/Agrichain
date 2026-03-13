@@ -1,21 +1,21 @@
 package com.cts.agrichain.entity;
 
 import com.cts.agrichain.enums.OrderStatus;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
-import org.springframework.cglib.core.Local;
-
+import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "Orders") // avoid reserved keyword "Order"
 public class Order {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // auto-generate primary key
     private int orderId;
-    // TODO
-    private int listingId;
+
+    // Many orders can belong to one CropListing
+    @ManyToOne
+    @JoinColumn(name = "listingId", nullable = false)
+    private CropListing cropListing;
 
     private int traderId;
     private int quantity;
@@ -24,6 +24,7 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
+    // Getters and Setters
     public int getOrderId() {
         return orderId;
     }
@@ -31,11 +32,11 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public int getListingId() {
-        return listingId;
+    public CropListing getCropListing() {
+        return cropListing;
     }
-    public void setListingId(int listingId) {
-        this.listingId = listingId;
+    public void setCropListing(CropListing cropListing) {
+        this.cropListing = cropListing;
     }
 
     public int getTraderId() {

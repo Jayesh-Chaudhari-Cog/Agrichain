@@ -15,31 +15,25 @@ public class ReportServiceImpl implements ReportService {
     private ReportRepo reportRepo;
 
     @Override
-    public Report saveReport(Report report) {
-        // You could add logic here (e.g., setting the date automatically)
-        if (report.getGeneratedDate() == null) {
-            report.setGeneratedDate(LocalDate.now());
-        }
+    public Report createReport(Report report) {
+        // Logic: Always set the generation date to 'now' when creating a new report
+        report.setGeneratedDate(LocalDate.now());
         return reportRepo.save(report);
     }
 
     @Override
-    public List<Report> getAllReports() {
+    public List<Report> fetchAllReports() {
         return reportRepo.findAll();
     }
 
     @Override
     public List<Report> getReportsByScope(String scope) {
+        // Logic: Useful for the "Generate dashboards for crop listings" feature
         return reportRepo.findByScope(scope);
     }
 
     @Override
-    public List<Report> getReportsAfterDate(LocalDate date) {
-        return reportRepo.findByGeneratedDateAfter(date);
-    }
-
-    @Override
-    public List<Report> searchByMetrics(String keyword) {
-        return reportRepo.findByMetricsContaining(keyword);
+    public List<Report> getReportsByDateRange(LocalDate start, LocalDate end) {
+        return reportRepo.findByGeneratedDateAfter(start);
     }
 }

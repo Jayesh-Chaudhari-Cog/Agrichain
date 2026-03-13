@@ -5,9 +5,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface ReportService {
-    Report saveReport(Report report);
-    List<Report> getAllReports();
+    // Basic CRUD
+    Report createReport(Report report);
+    List<Report> fetchAllReports();
+
+    // Analytics specific methods
     List<Report> getReportsByScope(String scope);
-    List<Report> getReportsAfterDate(LocalDate date);
-    List<Report> searchByMetrics(String keyword);
+    List<Report> getReportsByDateRange(LocalDate start, LocalDate end);
 }
